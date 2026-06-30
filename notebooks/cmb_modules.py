@@ -315,6 +315,11 @@ def cosine_window(N):
     # return the window map
     return window_map
 
+def get_fsky(pix_size, N, window=1):
+    "returns the fsky of a map given its size and its window"
+    patch_area = (pix_size / 60 * np.pi / 180)**2 * N**2
+    window_fsky = np.mean(window**2)**2 / np.mean(window**4)
+    return patch_area  / (4 * np.pi) * window_fsky
 
 ###############################
 
