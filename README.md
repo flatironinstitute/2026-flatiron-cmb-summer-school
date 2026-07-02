@@ -14,6 +14,7 @@ The school features a mixture of presentation-based lectures and notebook-based 
 
 ### Notebooks
 <!-- Add links to presentations and videos -->
+- [Introduction to Fast Discrete Fourier Transforms (FFTs/DFTs)](https://github.com/flatironinstitute/2026-flatiron-cmb-summer-school/blob/main/notebooks/Intro_to_FFTs.ipynb) - Zach Atkins (U Penn)
 - Simulating the CMB - Susanna Azzoni (Princeton)
 - Simulating SZ and Point Sources - Mat Madhavacheril (U Penn)
 - [Modeling Instrumental Noise and Beams](https://github.com/flatironinstitute/2026-flatiron-cmb-summer-school/blob/main/notebooks/CMB_School_modeling_noise_and_beams.ipynb) - Nadia Dachlythra (Università degli Studi di Milano-Bicocca)
