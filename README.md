@@ -27,7 +27,7 @@ The school features a mixture of presentation-based lectures and notebook-based 
 - [Real Experiment Beams](https://github.com/flatironinstitute/2026-flatiron-cmb-summer-school/blob/main/notebooks/CMB_Beam_Systematics.ipynb) - Nadia Dachlythra (Università degli Studi di Milano-Bicocca)
 - B-modes - Susanna Azzoni (Princeton)
 - [Y-map and Cross-Correlations](https://github.com/flatironinstitute/2026-flatiron-cmb-summer-school/blob/main/notebooks/CMB_School_ymap.ipynb) - Ola Kusiak (University of Cambridge)
-- Pixell and ACT Data - Zach Atkins (U Penn) 
+- [Pixell and ACT Data](https://github.com/simonsobs/pixell_tutorials) - Zach Atkins (U Penn) 
 
-## Acknoledgments
+## Acknowledgments
 Some of the material presented in this school heavily leveraged the publicly available resources from Jeff McMahon (U Chicago) for the [2024 ACT-SPT Analysis School](https://sites.google.com/uchicago.edu/act-sptcmbanalysissummersc/home) and the [ACT DR6 Notebooks](https://github.com/ACTCollaboration/DR6_Notebooks) from the [ACT Collaboration](https://act.princeton.edu/) (see acknowledgments within each notebook). We also thank the CCA for the financial and logistical support.    
