@@ -66,6 +66,83 @@ def make_CMB_T_map(N, pix_size, ell, DlTT):
     ## return the map
     return CMB_T
 
+def make_CMB_maps(N,pix_size,ell,DlTT,DlEE,DlTE,DlBB):
+    "makes a realization of a simulated CMB sky map"
+
+    # convert Dl to Cl, we use np.divide to avoid dividing by zero.
+    dell = ell * (ell + 1) / 2 / np.pi
+    ClTT = np.divide(DlTT, dell, where=ell>1)
+    ClEE = np.divide(DlEE, dell, where=ell>1)
+    ClTE = np.divide(DlTE, dell, where=ell>1)
+    ClBB = np.divide(DlBB, dell, where=ell>1)
+    
+    # set the \ell = 0 and \ell =1 modes to zero, as these are unmeasurable and blow up with the above transform
+    ClTT[0:2] = 0.
+    ClEE[0:2] = 0.
+    ClTE[0:2] = 0.
+    ClBB[0:2] = 0.
+
+    # separate the correlated and uncorrelated part of the EE spectrum
+    correlated_part_of_E = np.divide(ClTE, np.sqrt(ClTT), where=ell>1)
+    uncorrelated_part_of_EE = ClEE - np.divide(ClTE**2., ClTT, where=ell>1)
+    
+    correlated_part_of_E[0:2] = 0.
+    uncorrelated_part_of_EE[0:2] = 0.
+    
+    # make a 2d coordinate system
+    ones = np.ones(N)
+    inds  = (np.arange(N) - N/2.) /(N-1.)
+    X = np.outer(ones,inds)
+    Y = np.transpose(X)
+    R = np.sqrt(X**2. + Y**2.)
+    ang = np.arctan2(Y,X)   ## we now need this angle to handle the EB <--> QU rotation
+    
+    # now make a set of 2d CMB masks for the T, E, and B maps
+    ell_scale_factor = 2. * np.pi / (pix_size/60. * np.pi/180.)
+    ell2d = R * ell_scale_factor
+    ClTT_expanded = np.zeros(int(ell2d.max())+1)
+    ClTT_expanded[0:(ClTT.size)] = ClTT
+    ClEE_uncor_expanded = np.zeros(int(ell2d.max())+1)
+    ClEE_uncor_expanded[0:(uncorrelated_part_of_EE.size)] = uncorrelated_part_of_EE
+    ClE_corr_expanded = np.zeros(int(ell2d.max())+1)
+    ClE_corr_expanded[0:(correlated_part_of_E.size)] = correlated_part_of_E
+    ClBB_expanded = np.zeros(int(ell2d.max())+1)
+    ClBB_expanded[0:(ClBB.size)] = ClBB
+    CLTT2d = ClTT_expanded[ell2d.astype(int)]
+    ClEE_uncor_2d = ClEE_uncor_expanded[ell2d.astype(int)]
+    ClE_corr2d = ClE_corr_expanded[ell2d.astype(int)]
+    CLBB2d = ClBB_expanded[ell2d.astype(int)]
+    
+    # now make a set of Gaussian random fields that will be turned into the CMB maps
+    randomn_array_for_T = np.fft.fft2(np.random.normal(0,1,(N,N)))
+    randomn_array_for_E = np.fft.fft2(np.random.normal(0,1,(N,N))) 
+    randomn_array_for_B = np.fft.fft2(np.random.normal(0,1,(N,N))) 
+    
+    ## make the T, E, and B maps by multiplying the masks against the random fields
+    FT_2d = np.sqrt(CLTT2d) * randomn_array_for_T
+    FE_2d = np.sqrt(ClEE_uncor_2d) * randomn_array_for_E + ClE_corr2d* randomn_array_for_T
+    FB_2d = np.sqrt(CLBB2d) * randomn_array_for_B
+    
+    ## now convert E and B to Q and U
+    FQ_2d = FE_2d* np.cos(2.*ang) - FB_2d * np.sin(2. *ang)
+    FU_2d = FE_2d* np.sin(2.*ang) + FB_2d * np.cos(2. *ang)
+    
+    ## convert from Fourier space to real space
+    CMB_T = np.fft.ifft2(np.fft.fftshift(FT_2d)) /(pix_size /60.* np.pi/180.)
+    CMB_T = np.real(CMB_T)
+    CMB_Q = np.fft.ifft2(np.fft.fftshift(FQ_2d)) /(pix_size /60.* np.pi/180.)
+    CMB_Q = np.real(CMB_Q)
+    CMB_U = np.fft.ifft2(np.fft.fftshift(FU_2d)) /(pix_size /60.* np.pi/180.)
+    CMB_U = np.real(CMB_U)
+
+    ## optional code for spitting out E and B maps 
+    CMB_E = np.fft.ifft2(np.fft.fftshift(FE_2d)) /(pix_size /60.* np.pi/180.)
+    CMB_E = np.real(CMB_E)
+    CMB_B = np.fft.ifft2(np.fft.fftshift(FB_2d)) /(pix_size /60.* np.pi/180.)
+    CMB_B = np.real(CMB_B)
+    
+    ## return the maps
+    return(CMB_T,CMB_Q,CMB_U,CMB_E,CMB_B)
 
 def Plot_CMB_Map(Map_to_Plot, c_min, c_max, X_width, Y_width):
     from mpl_toolkits.axes_grid1 import make_axes_locatable
