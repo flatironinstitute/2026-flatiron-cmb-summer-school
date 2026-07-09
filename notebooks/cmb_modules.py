@@ -147,7 +147,7 @@ def make_CMB_maps(N,pix_size,ell,DlTT,DlEE,DlTE,DlBB):
 def Plot_CMB_Map(Map_to_Plot, c_min, c_max, X_width, Y_width):
     from mpl_toolkits.axes_grid1 import make_axes_locatable
 
-    print("map mean:", np.mean(Map_to_Plot), "map rms:", np.std(Map_to_Plot))
+
     plt.gcf().set_size_inches(10, 10)
     im = plt.imshow(
         Map_to_Plot, interpolation="bilinear", origin="lower", cmap=cm.RdBu_r
@@ -393,9 +393,8 @@ def cosine_window(N):
     return window_map
 
 def get_fsky(pix_size, N, window=1):
-    "returns the fsky of a map given its size and its window"
     patch_area = (pix_size / 60 * np.pi / 180)**2 * N**2
-    window_fsky = np.mean(window**2)**2 / np.mean(window**4)
+    window_fsky = np.mean(window**2)
     return patch_area  / (4 * np.pi) * window_fsky
 
 ###############################
@@ -455,7 +454,7 @@ def calculate_2d_spectrum(Map1, Map2, delta_ell, ell_max, pix_size, N):
         i = i + 1
 
     # return the power spectrum and ell bins
-    return (ell_array, CL_array * np.sqrt(pix_size / 60.0 * np.pi / 180.0) * 2.0)
+    return (ell_array,CL_array*(pix_size /60.* np.pi/180.) /4)
 
 
 def Plot_CMB_Lensing_Map(Map_to_Plot, X_width, Y_width):
