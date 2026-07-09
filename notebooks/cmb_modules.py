@@ -144,7 +144,7 @@ def make_CMB_maps(N,pix_size,ell,DlTT,DlEE,DlTE,DlBB):
     ## return the maps
     return(CMB_T,CMB_Q,CMB_U,CMB_E,CMB_B)
 
-def Plot_CMB_Map(Map_to_Plot, c_min, c_max, X_width, Y_width):
+def Plot_CMB_Map(Map_to_Plot, c_min, c_max, X_width, Y_width, title=None):
     from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 
@@ -156,6 +156,9 @@ def Plot_CMB_Map(Map_to_Plot, c_min, c_max, X_width, Y_width):
     im.set_extent([0, X_width, 0, Y_width])
     plt.ylabel(r"angle $[^\circ]$")
     plt.xlabel(r"angle $[^\circ]$")
+    title_str = title or ""
+    plt.title(title_str)
+
 
     ax = plt.gca()
     divider = make_axes_locatable(ax)
