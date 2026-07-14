@@ -17,7 +17,7 @@ The school features a mixture of presentation-based lectures and notebook-based 
 - [Introduction to Fast Discrete Fourier Transforms (FFTs/DFTs)](https://github.com/flatironinstitute/2026-flatiron-cmb-summer-school/blob/main/notebooks/Intro_to_FFTs.ipynb) - Zach Atkins (U Penn)
 - [Simulating the CMB](https://github.com/flatironinstitute/2026-flatiron-cmb-summer-school/blob/main/notebooks/CMB_School_Simulating_the_CMB.ipynb) - Susanna Azzoni (Princeton)
 - [Simulating SZ and Point Sources](https://github.com/flatironinstitute/2026-flatiron-cmb-summer-school/blob/main/notebooks/CMB_Simulating_SZ_and_Sources.ipynb) - Mat Madhavacheril (U Penn)
-- [Modeling Instrumental Noise and Beams](https://github.com/flatironinstitute/2026-flatiron-cmb-summer-school/blob/main/notebooks/CMB_School_modeling_noise_and_beams.ipynb) - Nadia Dachlythra (Università degli Studi di Milano-Bicocca)
+- [Modeling Instrumental Noise and Beams](https://github.com/flatironinstitute/2026-flatiron-cmb-summer-school/blob/main/notebooks/CMB_beam_and_noise_modeling.ipynb) - Nadia Dachlythra (Università degli Studi di Milano-Bicocca)
 - [Power Spectrum Analysis](https://github.com/flatironinstitute/2026-flatiron-cmb-summer-school/blob/main/notebooks/CMB_School_Power_Spectrum_Analysis.ipynb) - Merry Duparc (Université Paris-Saclay)
 - [CMB Polarization](https://github.com/flatironinstitute/2026-flatiron-cmb-summer-school/blob/main/notebooks/CMB_School_CMB_Polarization.ipynb) - Simone Aiola (CCA/Simons Foundation)
 - [Lensing Simulation](https://github.com/flatironinstitute/2026-flatiron-cmb-summer-school/blob/main/notebooks/CMB_School_Lensing_Simulation.ipynb) - Irene Abril Cabezas (University of Cambridge)
