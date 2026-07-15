@@ -8,7 +8,7 @@ The school features a mixture of presentation-based lectures and notebook-based 
 
 ### Lectures
 <!-- Add links to presentations and videos -->
-- CMB Data Analysis Overview - Mat Madhavacheril (U Penn)
+- [CMB Data Analysis Overview](https://github.com/flatironinstitute/2026-flatiron-cmb-summer-school/blob/main/presentations/FlatironCMBTutorial.pdf) - Mat Madhavacheril (U Penn)
 - Overview of the CMB Field - Suzanne Staggs (Princeton)
 - Machine Learning and Simulations - Adrian Bayer (CCA/Simons Foundation)
 
