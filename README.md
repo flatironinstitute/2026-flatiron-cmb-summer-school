@@ -10,7 +10,7 @@ The school features a mixture of presentation-based lectures and notebook-based 
 <!-- Add links to presentations and videos -->
 - [CMB Data Analysis Overview](https://github.com/flatironinstitute/2026-flatiron-cmb-summer-school/blob/main/presentations/FlatironCMBTutorial.pdf) - Mat Madhavacheril (U Penn)
 - [Overview of the CMB Field](https://github.com/flatironinstitute/2026-flatiron-cmb-summer-school/blob/main/presentations/20260715-Flatliron-Summer-Staggs-to-post.pdf) - Suzanne Staggs (Princeton)
-- Machine Learning and Simulations - Adrian Bayer (CCA/Simons Foundation)
+- [Machine Learning and Simulations](https://github.com/flatironinstitute/2026-flatiron-cmb-summer-school/blob/main/presentations/26.07-CMBSummerSchoolML.pdf) - Adrian Bayer (CCA/Simons Foundation)
 
 ### Notebooks
 <!-- Add links to presentations and videos -->
